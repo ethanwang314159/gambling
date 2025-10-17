@@ -6,7 +6,7 @@ there are 6 endings and you probably shouldn't see any more than 4
 
 # Usage
 
-you can edit the constants `CHANCE`, `PAYOUT`, `START_BALANCE` to see stuff
+try different inputs to try get the endings. yeah thats about it i didnt spend that much time making this look good ok.
 
 ```
 python simple-kelly.py
