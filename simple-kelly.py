@@ -2,6 +2,9 @@ import random
 import time
 
 UP = "\x1b[1A"
+CHANCE = 0.51
+PAYOUT = 2
+START_BALANCE = 100
 
 def gamble(chance, amount, multiplier):
     return amount * multiplier if random.random() < chance else 0
@@ -9,21 +12,19 @@ def gamble(chance, amount, multiplier):
 def pray_to_kelly(chance, multiplier):
     return (chance*multiplier-1)/(multiplier-1) if chance > 1/multiplier else 0
 
-chance = 0.51
-payout = 2
-balance = 100
+balance = START_BALANCE
+peak = START_BALANCE
 wins = 0
 bets = 0
-peak = balance
 
 print("")
-print(f"Playing simple gambling game starting on ${balance}, {chance} odds with a payout of {payout-1}x the bet amount.")
+print(f"Playing binary return gambling game starting on ${balance}, {CHANCE} odds with a payout of {PAYOUT}x the bet amount.")
 print("\n"*4)
 
 while balance > 0:
-    togamb = pray_to_kelly(chance, payout) * balance
+    togamb = pray_to_kelly(CHANCE, PAYOUT) * balance
     balance -= togamb
-    result = gamble(chance, togamb, payout)
+    result = gamble(CHANCE, togamb, PAYOUT)
     balance += result
     bets += 1
     peak = max(peak, balance)
