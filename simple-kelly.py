@@ -27,7 +27,10 @@ while balance > 0 and running:
     togamb = pray_to_kelly(CHANCE, PAYOUT) * balance
     if togamb < 0.01:
         running = False
-        reason = "Gambler's ruin"
+        if bets < 20:
+            reason = "Gambler's ruin"
+        else:
+            reason = "bad"
         print(UP*6)
         continue
     balance -= togamb
