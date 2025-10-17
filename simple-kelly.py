@@ -27,7 +27,7 @@ while balance > 0:
     balance += result
     bets += 1
     peak = max(peak, balance)
-
+    wins += 1 if result > 0 else 0
     resultprint = f"OUTCOME OF LAST BET: {'+' if result > 0 else '-'} ${togamb:.2f}"
     peakprint = f"PEAK BALANCE: ${peak:.2f}"
     betsprint = f"BETS: {bets}"
