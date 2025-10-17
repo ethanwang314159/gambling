@@ -57,14 +57,14 @@ if reason == "idk":
 
 match reason:
     case "damn":
-        print("wow you really just did that. like you really just put a really small amount of money just to see the bot run out of money. wow. i know what you are. \nyou also probably did something like put the odds of winning small. ok bro. not funny.")
+        print("(4) wow you really just did that. like you really just put a really small amount of money just to see the bot run out of money. wow. i know what you are. \nyou also probably did something like put the odds of winning small. ok bro. not funny.")
     case "bad":
-        print("ok you're so bad you literally broke the system like you should not be able to see this at all like ever")
+        print("(5) ok you're so bad you literally broke the system like you should not be able to see this at all like ever \nno seriously why are you here.")
     case "Gambler's ruin":
-        print("it's not worth it")
+        print("(3) it's not worth it, see https://en.wikipedia.org/wiki/Gambler's_ruin")
     case "hacker":
-        print("you hacker you set your balance above the limit")
+        print("(2) you hacker you set your balance above the limit")
     case "rich":
-        print("you're just rich")
+        print("(1) you're just rich")
     case _:
-        print("how did you get here")
+        print("(6) how did you get here bro (secret ending you're not meant to see)")
