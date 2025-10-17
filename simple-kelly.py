@@ -2,9 +2,9 @@ import random
 import time
 
 UP = "\x1b[1A"
-CHANCE = 0.51
+CHANCE = 0.501
 PAYOUT = 2
-START_BALANCE = 1
+START_BALANCE = 10
 
 def gamble(chance, amount, multiplier):
     return amount * multiplier if random.random() < chance else 0
@@ -27,11 +27,8 @@ while balance > 0 and running:
     togamb = pray_to_kelly(CHANCE, PAYOUT) * balance
     if togamb < 0.01:
         running = False
-        if bets < 20:
-            reason = "Gambler's ruin"
-        else:
-            reason = "bad"
-        print(UP*6)
+        reason = "Gambler's ruin" if bets < 20 else "damn"
+        if bets == 1: print(UP*6)
         continue
     balance -= togamb
     result = gamble(CHANCE, togamb, PAYOUT)
@@ -51,6 +48,8 @@ while balance > 0 and running:
     #time.sleep(0.1)
 
 match reason:
+    case "damn":
+        print("wow you really just did that. like you really just put a really small amount of money just to see the bot run out of money. wow. i know what you are. \nyou also probably did something like put the odds of winning small. ok bro. not funny.")
     case "bad":
         print("ok you're so bad you literally broke the system like you should not be able to see this at all like ever")
     case "Gambler's ruin":
