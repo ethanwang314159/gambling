@@ -1,19 +1,13 @@
 import random
 import time
 
-CLEAR = "\x1b[K"
 UP = "\x1b[1A"
 
 def gamble(chance, amount, multiplier):
-    if random.random() < chance:
-        return amount * multiplier
-    return 0
+    return amount * multiplier if random.random() < chance else 0
 
 def pray_to_kelly(chance, multiplier):
-    if chance > (1/multiplier):
-        return (chance*multiplier-1)/(multiplier-1)
-    else:
-        return 0
+    return (chance*multiplier-1)/(multiplier-1) if chance > 1/multiplier else 0
 
 chance = 0.51
 payout = 2
@@ -21,12 +15,9 @@ balance = 100
 wins = 0
 bets = 0
 peak = balance
+print("")
 print(f"Playing simple gambling game starting on ${balance}, {chance} odds with a payout of {payout-1}x the bet amount.")
-print("")
-print("")
-print("")
-print("")
-print("")
+print("\n"*4)
 
 while balance > 0:
     togamb = pray_to_kelly(chance, payout) * balance
@@ -46,7 +37,7 @@ while balance > 0:
     betsprint = "BETS: " + str(bets)
     winsprint = "WINS: " + str(wins)
 
-    print(CLEAR + UP + CLEAR + UP + CLEAR + UP + CLEAR + UP + CLEAR + UP, end="")
-    print(f"Balance: ${balance:.2f}" + "\n" + resultprint + "\n" + peakprint + "\n" + betsprint + "\n" + winsprint)
+    print(UP*6)
+    print(f"Balance: ${balance:.2f}\n{resultprint}\n{peakprint}\n{betsprint}\n{winsprint}")
     
     #time.sleep(0.1)
