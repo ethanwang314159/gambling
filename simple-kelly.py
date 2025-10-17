@@ -22,8 +22,8 @@ print(f"Playing binary return gambling game starting on ${balance}, {CHANCE} odd
 print("\n"*4)
 
 running = True
-reason = "bad"
-while balance > 0 and running:
+reason = "idk"
+while balance > 0 and running and balance < 2147483647:
     togamb = pray_to_kelly(CHANCE, PAYOUT) * balance
     if togamb < 0.01:
         running = False
@@ -47,6 +47,14 @@ while balance > 0 and running:
     
     #time.sleep(0.1)
 
+if reason == "idk":
+    if balance > 4294967295:
+        reason = "hacker"
+    elif balance > 2147483647:
+        reason = "hacker" if bets == 0 else "rich"
+    else:
+        reason = "bad"
+
 match reason:
     case "damn":
         print("wow you really just did that. like you really just put a really small amount of money just to see the bot run out of money. wow. i know what you are. \nyou also probably did something like put the odds of winning small. ok bro. not funny.")
@@ -54,5 +62,9 @@ match reason:
         print("ok you're so bad you literally broke the system like you should not be able to see this at all like ever")
     case "Gambler's ruin":
         print("it's not worth it")
+    case "hacker":
+        print("you hacker you set your balance above the limit")
+    case "rich":
+        print("you're just rich")
     case _:
         print("how did you get here")
